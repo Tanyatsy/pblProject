@@ -2,7 +2,6 @@ package com.pbl.controllers;
 
 
 import com.pbl.models.Student;
-import com.pbl.respositories.StudentRepository;
 import com.pbl.services.serviceimpl.StudentServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +23,11 @@ public class StudentController{
     }
 
 
-    @GetMapping("/student/{id}")
-    public Optional<Student> findById(int id) {
-        return studentServiceImpl.findById(id);
+    @GetMapping("/student/{studentId}")
+    public Optional<Student> findById(int studentId) {
+        return studentServiceImpl.findById(studentId);
     }
+
 
 
 }

@@ -1,6 +1,8 @@
 package com.pbl.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,6 +24,7 @@ public class Subject {
     @Column(name = "nrOfLessons")
     private int nrOfLessons;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "subject", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Entity> tags;
 }

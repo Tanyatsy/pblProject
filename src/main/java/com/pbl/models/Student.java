@@ -1,6 +1,8 @@
 package com.pbl.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 
@@ -26,6 +28,7 @@ public class Student {
     @Column(name = "KPI")
     private String KPI;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Entity> tags;
 }
