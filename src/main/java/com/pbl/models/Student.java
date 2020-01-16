@@ -5,8 +5,9 @@ import lombok.Data;
 
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "student")
 @Data
 public class Student {
@@ -24,6 +25,9 @@ public class Student {
 
     @Column(name = "KPI")
     private String KPI;
+
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Entity> tags;
 }
 
 
