@@ -18,8 +18,8 @@ public class StudentController{
 
 
     @GetMapping("/students")
-    public List<Student> findAllEntities() {
-        return studentServiceImpl.findAllEntities();
+    public List<Student> findAllStudents() {
+        return studentServiceImpl.findAllStudents();
     }
 
 

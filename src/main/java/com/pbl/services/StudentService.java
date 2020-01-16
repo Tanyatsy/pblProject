@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface StudentService {
 
-    List<Student> findAllEntities();
+    List<Student> findAllStudents();
 
     Optional<Student> findById(int id);
 
