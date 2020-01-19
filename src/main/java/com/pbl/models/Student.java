@@ -8,12 +8,14 @@ import lombok.Data;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "student")
 @Data
-public class Student {
+public class Student implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +33,15 @@ public class Student {
 
     @JsonBackReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Entity> tags;
+
+    /*@JsonBackReference*/
+   /* @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
+    /*@OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})*/
+    @OneToMany( fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "studentId")
+    private Set<RegisterInfo> info;
 }
 
 
