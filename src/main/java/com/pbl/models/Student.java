@@ -21,28 +21,29 @@ public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studentId")
-    private int studentId;
+    public int studentId;
 
     @Column(name = "firstName")
-    private String firstName;
+    public String firstName;
 
     @Column(name = "lastName")
-    private String lastName;
+    public String lastName;
 
     @Column(name = "KPI")
-    private String KPI;
+    public String KPI;
 
-    @JsonBackReference
+    @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Entity> tags;
+    public List<Entity> tags;
 
     /*@JsonBackReference*/
    /* @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
     /*@OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})*/
+    @JsonManagedReference
     @OneToMany( fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "studentId")
-    private Set<RegisterInfo> info;
+    public Set<RegisterInfo> info;
 }
 
 

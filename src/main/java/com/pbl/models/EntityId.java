@@ -13,13 +13,13 @@ import java.io.Serializable;
 public class EntityId implements Serializable {
 
     @Column(name = "studentId")
-    private int studentId;
+    public int studentId;
 
     @Column(name = "subjectId")
-    private int subjectId;
+    public int subjectId;
 
     @Column(name = "teacherId")
-    private int teacherId;
+    public int teacherId;
 
 
 

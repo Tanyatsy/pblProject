@@ -5,6 +5,8 @@ import com.pbl.models.Student;
 import com.pbl.respositories.RegisterInfoRepository;
 import com.pbl.services.RegisterInfoService;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class RegisterInfoServiceImpl implements RegisterInfoService {
 
-    private final RegisterInfoRepository registerInfoRepository;
+	@Autowired
+    private RegisterInfoRepository registerInfoRepository;
 
     @Override
     public List<RegisterInfo> findAllRegisterInfo() {

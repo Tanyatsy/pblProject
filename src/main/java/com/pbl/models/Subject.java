@@ -17,16 +17,16 @@ public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subjectId")
-    private int subjectId;
+    public int subjectId;
 
     @Column(name = "subjectName")
-    private String subjectName;
+    public String subjectName;
 
     @Column(name = "nrOfLessons")
-    private int nrOfLessons;
+    public int nrOfLessons;
 
-    @JsonBackReference
+    @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "subject", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Entity> tags;
+    public List<Entity> tags;
 }

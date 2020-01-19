@@ -6,6 +6,8 @@ import com.pbl.respositories.EntityRepository;
 import com.pbl.respositories.StudentRepository;
 import com.pbl.services.EntityService;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +17,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class EntityServiceImpl implements EntityService {
 
-    private final EntityRepository entityRepository;
+	@Autowired
+    private EntityRepository entityRepository;
 
     @Override
     public List<Entity> findAllEntities() {

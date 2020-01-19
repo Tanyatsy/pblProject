@@ -5,6 +5,8 @@ import com.pbl.models.Student;
 import com.pbl.services.serviceimpl.EntityServiceImpl;
 import com.pbl.services.serviceimpl.StudentServiceImpl;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +16,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class EntityController {
 
-    private final EntityServiceImpl entityServiceImpl;
+	@Autowired
+    private EntityServiceImpl entityServiceImpl;
 
     @GetMapping("/entities")
     public List<Entity> findAllEntities() {

@@ -21,25 +21,25 @@ import java.util.Date;
 public class Entity {
 
     @EmbeddedId
-    private EntityId id;
+    public EntityId id;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("studentId")
-    private Student student;
+    public Student student;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("teacherId")
-    private Teacher teacher;
+    public Teacher teacher;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("subjectId")
-    private Subject subject;
+    public Subject subject;
 
     @Column
-    private Date createdOn = new Date();
+    public Date createdOn = new Date();
 
 
 }
