@@ -23,17 +23,17 @@ public class Entity {
     @EmbeddedId
     public EntityId id;
 
-    @JsonBackReference
+    @JsonBackReference(value = "entity_student")
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("studentId")
     public Student student;
 
-    @JsonBackReference
+    @JsonBackReference(value = "entity_teacher")
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("teacherId")
     public Teacher teacher;
 
-    @JsonBackReference
+    @JsonBackReference(value = "entity_subject")
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("subjectId")
     public Subject subject;

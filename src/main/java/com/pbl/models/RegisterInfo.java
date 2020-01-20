@@ -23,10 +23,7 @@ public class RegisterInfo {
     @Column(name = "activity")
     public String activity;
 
-    @JsonBackReference
-   /* @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
-    /*@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "studentId", nullable = false)*/
+    @JsonBackReference(value ="registerinfo")
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "studentId", insertable = false, updatable = false)
     public Student student;

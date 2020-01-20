@@ -35,7 +35,7 @@ public class RegisterInfoController {
         return registerInfoServiceImpl.findByStudent(student);
     }
 
-    @PutMapping("registerinfo/update/{id}")
+    @PutMapping("/registerinfo/update/{id}")
     public ResponseEntity<Object> updateRegisterInfo(@RequestBody RegisterInfo registerInfo, @PathVariable int id) throws Exception{
         return registerInfoServiceImpl.updateRegisterInfo(registerInfo,id);
     }
