@@ -16,23 +16,23 @@ public class RegisterInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    public int id;
 
     @Column(name = "date")
-    private String date;
+    public String date;
     @Column(name = "absence")
-    private byte absence;
+    public byte absence;
     @Column(name = "mark")
-    private int mark;
+    public int mark;
     @Column(name = "activity")
-    private String activity;
+    public String activity;
 
-    /*@JsonManagedReference*/
+    @JsonBackReference
    /* @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
     /*@ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "studentId", nullable = false)*/
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "studentId", insertable = false, updatable = false)
-    private Student student;
+    public Student student;
 
 }

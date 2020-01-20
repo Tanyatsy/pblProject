@@ -4,7 +4,10 @@ package com.pbl.controllers;
 import com.pbl.models.Student;
 import com.pbl.services.serviceimpl.StudentServiceImpl;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,7 +17,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class StudentController{
 
-    private final StudentServiceImpl studentServiceImpl;
+	@Autowired
+    private StudentServiceImpl studentServiceImpl;
 
 
     @GetMapping("/students")
@@ -24,7 +28,7 @@ public class StudentController{
 
 
     @GetMapping("/student/{studentId}")
-    public Optional<Student> findById(int studentId) {
+    public Optional<Student> findById(@PathVariable int studentId) {
         return studentServiceImpl.findById(studentId);
     }
 

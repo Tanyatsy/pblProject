@@ -4,7 +4,10 @@ import com.pbl.models.Student;
 import com.pbl.models.Subject;
 import com.pbl.services.serviceimpl.SubjectServiceImpl;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -13,7 +16,9 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 public class SubjectController {
-    private final SubjectServiceImpl subjectServiceImpl;
+	
+	@Autowired
+    private SubjectServiceImpl subjectServiceImpl;
     @GetMapping("/subjects")
     public List<Subject> findAllSubjects() {
         return subjectServiceImpl.findAllSubjects();
@@ -21,7 +26,7 @@ public class SubjectController {
 
 
     @GetMapping("/subjects/{subjectId}")
-    public Optional<Subject> findById(int subjectId) {
+    public Optional<Subject> findById(@PathVariable int subjectId) {
         return subjectServiceImpl.findById(subjectId);
     }
 }

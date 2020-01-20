@@ -17,14 +17,14 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "teacherId")
-    private int teacherId;
+    public int teacherId;
 
     @Column(name = "teacherName")
-    private String teacherName;
+    public String teacherName;
 
-    @JsonBackReference
+    @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Entity> tags;
+    public List<Entity> tags;
 
 }
