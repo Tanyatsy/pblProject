@@ -15,7 +15,6 @@ import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "student")
-@Data
 public class Student implements Serializable {
 
     @Id

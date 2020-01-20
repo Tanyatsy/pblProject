@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import java.io.Serializable;
-import java.sql.Date;
-import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "registerInfo")
