@@ -6,9 +6,8 @@ import com.pbl.services.serviceimpl.StudentServiceImpl;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +29,16 @@ public class StudentController{
     @GetMapping("/student/{studentId}")
     public Optional<Student> findById(@PathVariable int studentId) {
         return studentServiceImpl.findById(studentId);
+    }
+
+    @PostMapping("students/create")
+    public ResponseEntity<Object> createStudent(@RequestBody Student student){
+        return studentServiceImpl.createStudent(student);
+    }
+
+    @PutMapping("students/update/{id}")
+    public ResponseEntity<Object> updateStudent(@RequestBody Student student,@PathVariable int id) throws Exception{
+        return studentServiceImpl.updateStudent(student,id);
     }
 
 

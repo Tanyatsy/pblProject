@@ -31,4 +31,6 @@ public class RegisterInfo {
     @JoinColumn(name = "studentId", insertable = false, updatable = false)
     public Student student;
 
+
+
 }
