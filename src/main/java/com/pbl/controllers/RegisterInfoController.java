@@ -6,9 +6,8 @@ import com.pbl.services.serviceimpl.RegisterInfoServiceImpl;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +33,11 @@ public class RegisterInfoController {
     public List<RegisterInfo> findByStudent(@PathVariable int studentId) {
     	Student student = studentHandler.findById(studentId).get();
         return registerInfoServiceImpl.findByStudent(student);
+    }
+
+    @PutMapping("/registerinfo/update/{id}")
+    public ResponseEntity<Object> updateRegisterInfo(@RequestBody RegisterInfo registerInfo, @PathVariable int id) throws Exception{
+        return registerInfoServiceImpl.updateRegisterInfo(registerInfo,id);
     }
 
 

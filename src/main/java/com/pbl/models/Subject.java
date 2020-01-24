@@ -25,7 +25,7 @@ public class Subject {
     @Column(name = "nrOfLessons")
     public int nrOfLessons;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "entity_subject")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "subject", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     public List<Entity> tags;

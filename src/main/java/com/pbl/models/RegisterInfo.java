@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import java.io.Serializable;
-import java.sql.Date;
-import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "registerInfo")
@@ -21,18 +17,17 @@ public class RegisterInfo {
     @Column(name = "date")
     public String date;
     @Column(name = "absence")
-    public byte absence;
+    public boolean absence;
     @Column(name = "mark")
     public int mark;
     @Column(name = "activity")
     public String activity;
 
-    @JsonBackReference
-   /* @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
-    /*@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "studentId", nullable = false)*/
+    @JsonBackReference(value ="registerinfo")
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "studentId", insertable = false, updatable = false)
     public Student student;
+
+
 
 }

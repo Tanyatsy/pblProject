@@ -22,7 +22,7 @@ public class Teacher {
     @Column(name = "teacherName")
     public String teacherName;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "entity_teacher")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(mappedBy = "teacher", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     public List<Entity> tags;
