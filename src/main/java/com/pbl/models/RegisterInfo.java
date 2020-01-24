@@ -17,7 +17,7 @@ public class RegisterInfo {
     @Column(name = "date")
     public String date;
     @Column(name = "absence")
-    public byte absence;
+    public boolean absence;
     @Column(name = "mark")
     public int mark;
     @Column(name = "activity")

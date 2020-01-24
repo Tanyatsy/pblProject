@@ -3,7 +3,9 @@ package com.pbl.controllers;
 
 import com.pbl.algorithm.KpiCalculator;
 import com.pbl.models.Student;
+import com.pbl.models.Subject;
 import com.pbl.services.serviceimpl.StudentServiceImpl;
+import com.pbl.services.serviceimpl.SubjectServiceImpl;
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class StudentController{
 	@Autowired
     private StudentServiceImpl studentServiceImpl;
 
+    @Autowired
+    private SubjectServiceImpl subjectServiceImpl;
+
     @GetMapping("/students")
     public List<Student> findAllStudents() {
         return studentServiceImpl.findAllStudents();
@@ -35,6 +40,20 @@ public class StudentController{
         Student student = studentServiceImpl.findById(studentId).get();
         List<Integer> marks = student.getInfo().stream().map(p->p.mark).collect(Collectors.toList());
         return KpiCalculator.calculateAverageMark(marks);
+    }
+
+    @GetMapping("/students/calculateAbsence/{studentId}")
+    public double calculateAmountOfAbsence(@PathVariable int studentId){
+        Student student = studentServiceImpl.findById(studentId).get();
+        List<Boolean> absence = student.getInfo().stream().map(p->p.absence).collect(Collectors.toList());
+        return KpiCalculator.calculateAmountOfAbsence(absence);
+    }
+
+    @GetMapping("/students/calculateActivity/{studentId}")
+    public double calculateAmountOfStudentActivity(@PathVariable int studentId){
+        Student student = studentServiceImpl.findById(studentId).get();
+        List<String> activity = student.getInfo().stream().map(p->p.activity).collect(Collectors.toList());
+        return KpiCalculator.calculateActualActivityResult(activity);
     }
 
     @GetMapping("/student/{studentId}")
