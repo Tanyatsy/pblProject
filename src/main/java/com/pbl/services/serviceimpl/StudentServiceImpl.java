@@ -54,4 +54,18 @@ public class StudentServiceImpl implements StudentService {
                 ).orElseThrow(() -> new Exception("There is student with such id " + id)));
         return ResponseEntity.noContent().build();
     }
+
+    public ResponseEntity<Object> updateStudent(Student student, int id, double kpi) throws Exception {
+        Optional.ofNullable(studentRepository.findById(id)
+                .map(person1 -> {
+                            log.info("Post with personId = '{}' faunded.", id);
+                            student.setStudentId(id);
+                            student.setKPI(kpi);
+                            studentRepository.save(student);
+                            log.info("person updated:{}",student);
+                            return student;
+                        }
+                ).orElseThrow(() -> new Exception("There is student with such id " + id)));
+        return ResponseEntity.noContent().build();
+    }
 }

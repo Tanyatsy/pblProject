@@ -30,7 +30,7 @@ public class SubjectController {
         return subjectServiceImpl.findById(subjectId);
     }
 
-    @GetMapping("/subjects/{subjectId}")
+    @GetMapping("/subjects/calculateAmountOfLessons/{subjectId}")
     public List<Integer> calculateAmountOfLessons(@PathVariable int subjectId){
         Subject subject = subjectServiceImpl.findById(subjectId).get();
         List<Integer> nrOfLessons = Collections.singletonList(subject.getNrOfLessons());
