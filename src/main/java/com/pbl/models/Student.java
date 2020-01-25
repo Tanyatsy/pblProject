@@ -1,11 +1,8 @@
 package com.pbl.models;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Data;
 
 
 import javax.persistence.*;
@@ -29,7 +26,7 @@ public class Student implements Serializable {
     public String lastName;
 
     @Column(name = "KPI")
-    public String KPI;
+    public double KPI;
 
     @JsonManagedReference(value = "entity_student")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -65,11 +62,11 @@ public class Student implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getKPI() {
+    public double getKPI() {
         return KPI;
     }
 
-    public void setKPI(String KPI) {
+    public void setKPI(double KPI) {
         this.KPI = KPI;
     }
 
